@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space.com</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Top Header */
+  .top-header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top-header img {
+    height: 40px;
+  }
+
+  .top-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .top-right button,
+  .top-right a {
+    color: white;
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .top-right button:hover,
+  .top-right a:hover {
+    opacity: 0.8;
+  }
+
+  .newsletter-btn {
+    background-color: #5b8def;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 15px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+  }
+
+  .social-icon.facebook {
+    background-color: #1877f2;
+  }
+
+  .social-icon.twitter {
+    background-color: #000000;
+  }
+
+  .social-icon.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  }
+
+  .social-icon.youtube {
+    background-color: #ff0000;
+  }
+
+  .social-icon.kick {
+    background-color: #d91e63;
+  }
+
+  .social-icon.rss {
+    background-color: #ff7e1f;
+  }
+
+  .sign-in-btn,
+  .notification-btn,
+  .search-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 5px 10px;
+    gap: 8px;
+  }
+
+  .search-box input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    width: 150px;
+  }
+
+  .search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .search-box button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+  }
+
+  /* Navigation Bar */
+  .navbar {
+    background-color: #1e5da6;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-size: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar a:last-child {
+    border-right: none;
+  }
+
+  .navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar a.home-icon {
+    padding: 15px 25px;
+  }
+
+  /* Main Content */
+  .main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .hero-section {
+    background: linear-gradient(rgba(10, 14, 39, 0.7), rgba(30, 58, 138, 0.7)), url('https://cdn.mos.cms.futurecdn.net/rsNBTxsfKebUxQpbjLGtk5-970-80.jpg.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .hero-section p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .explore-btn {
+    background-color: #5b8def;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .explore-btn:hover {
+    background-color: #4a7ad6;
+  }
+
+  /* Articles Grid */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .article-card {
+    background: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .article-image {
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+  }
+
+  .article-content {
+    padding: 20px;
+  }
+
+  .article-tag {
+    display: inline-block;
+    background-color: #5b8def;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .article-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  .article-excerpt {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .read-more {
+    color: #5b8def;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #5b8def;
+  }
+
+  .copyright {
+    margin-top: 20px;
+    color: #999;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="top-header">
+    <img src="https://www.space.com/media/img/spc-logo-w.svg" alt="Space">
+    <div class="top-right">
+      <button class="newsletter-btn">✉️ Sign up to our newsletter</button>
+      <a href="#" class="social-icon facebook" title="Facebook">f</a>
+      <a href="#" class="social-icon twitter" title="Twitter">𝕏</a>
+      <a href="#" class="social-icon instagram" title="Instagram">📷</a>
+      <a href="#" class="social-icon youtube" title="YouTube">▶</a>
+      <a href="#" class="social-icon kick" title="Kick">⧗</a>
+      <a href="#" class="social-icon rss" title="RSS">⊙</a>
+      <button class="sign-in-btn">👤 Sign in</button>
+      <button class="notification-btn">🔔</button>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button class="search-btn">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="home-icon">Home</a>
+    <a href="#">Space Exploration</a>
+    <a href="#">Astronomy</a>
+    <a href="#">Stargazing</a>
+    <a href="#">Entertainment</a>
+    <a href="#">Tech & Science</a>
+    <a href="#">Videos</a>
+    <a href="#">More</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1>Welcome to Space.com</h1>
+    <p>Explore the universe and discover the wonders of space</p>
+    <button class="explore-btn">Start Exploring</button>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h2 style="margin-bottom: 30px; color: #1a1a1a;">Latest Articles</h2>
+    
+    <div class="articles-grid">
+      <!-- Article 1 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/S9DE524hybLZtBpCnchk9S-650-80.jpg.webp" alt="NASA Mars Mission" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Space Exploration</span>
+          <h3 class="article-title">NASA's New Mission to Mars</h3>
+          <p class="article-excerpt">
+            Discover the latest plans for human exploration of the Red Planet and what it means for the future of space travel.
+          </p>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/sPUXDMZfeB6upyUjQB4iSf-650-80.jpg.webp" alt="Distant Galaxy" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Astronomy</span>
+          <h3 class="article-title">Distant Galaxy Discovered</h3>
+          <p class="article-excerpt">
+            Scientists have detected signals from a galaxy billions of light-years away, revealing new insights into the early universe.
+          </p>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/MmRfDRwEvKM8Hn9RaELvbM-650-80.jpg.webp" alt="SpaceX Satellite" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Tech & Science</span>
+          <h3 class="article-title">SpaceX Launches New Satellite</h3>
+          <p class="article-excerpt">
+            The latest Starlink satellites have been successfully deployed, expanding global internet coverage to remote regions.
+          </p>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/SbhpJ2dVFCoSFnHyPXgxSB-650-80.jpg.webp" alt="Night Sky" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Stargazing</span>
+          <h3 class="article-title">Best Places to See the Night Sky</h3>
+          <p class="article-excerpt">
+            From the darkest deserts to mountain peaks, explore the world's best locations for stargazing and astronomical observation.
+          </p>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/rUkFiGKcN6zrpFqTajWkvV-650-80.png.webp" alt="Meteor Shower" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Entertainment</span>
+          <h3 class="article-title">Upcoming Meteor Shower</h3>
+          <p class="article-excerpt">
+            Mark your calendars! The Perseids meteor shower will light up the night sky next month with up to 100 meteors per hour.
+          </p>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="article-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/gMXYHz8hjiasfcXcmJQ9DX-650-80.jpg.webp" alt="James Webb Telescope" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="article-content">
+          <span class="article-tag">Astronomy</span>
+          <h3 class="article-title">James Webb Telescope Updates</h3>
+          <p class="article-excerpt">
+            See the latest stunning images captured by the James Webb Space Telescope, revealing the universe in unprecedented detail.
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Advertise</a>
+        <a href="#">Careers</a>
+      </div>
+      <p class="copyright">© 2026 Space.com. All rights reserved. Exploring the universe since 1999.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
